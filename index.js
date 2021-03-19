@@ -5,6 +5,11 @@ var _ = require("lodash");
 
 class SFDC {
     constructor(args) {
+
+        if (!args.user || !args.pass || !args.host) {
+            throw 'bad args';
+        }
+
         this.user = args.user;
         this.pass = args.pass;
         this.sfdc = new (require("jsforce")).Connection({
