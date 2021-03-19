@@ -1,0 +1,14 @@
+{
+  "name": "gsfdc",
+  "version": "1.0.0",
+  "description": "jsforce wrapper",
+  "main": "index.js",
+  "author": "gmillerd",
+  "license": "NOLICENSE",
+  "repository": "github:gmillerd/gsfdc",
+  "dependencies": {
+    "async": "latest",
+    "jsforce": "latest",
+    "lodash": "latest"
+  }
+}
