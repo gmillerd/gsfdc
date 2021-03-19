@@ -1,7 +1,7 @@
 # gsfdc
 
 ```
-var sfdc = new (require("../gsfdc"))({
+var sfdc = new (require("gsfdc"))({
     host: "https://test.salesforce.com",
     user: "you@example.com",
     pass: "secret",
