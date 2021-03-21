@@ -28,6 +28,38 @@ class SFDC {
             });
     }
 
+    Upsert(obj, recs, pk, cb) {
+        var top = this;
+
+        if (Array.isArray(recs)) {
+	    let uni = _.uniqBy(recs, pk);
+	    if (uni.length != recs.length) {
+                console.error('duplicates exist in your recs, that is so annoying');
+            }
+            recs = uni;
+        }
+
+	async.waterfall([
+            function (cbb) {
+                if (top.sfdcLoggedin) {
+                    cbb();
+                } else {
+                    top._login(function (err, res) {
+                        cbb(err, res);
+                    });
+                }
+            },
+        ], function () {
+	    
+            top.sfdc.sobject(obj).upset(recs,
+					pk,
+					{ allowRecursive: true },
+					function (err, ret) {
+					    cb(err, ret);
+					});
+        });
+    }
+    
     Update(obj, recs, cb) {
         var top = this;
 
@@ -87,6 +119,7 @@ class SFDC {
                     }
                 })
                 .on("error", function (err) {
+                    console.log(err);
                     cb(err);
                 })
                 .run({ autoFetch: true, maxFetch: 1000 * 1000 * 1000 });

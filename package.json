@@ -7,8 +7,8 @@
   "license": "NOLICENSE",
   "repository": "github:gmillerd/gsfdc",
   "dependencies": {
-    "async": "latest",
-    "jsforce": "latest",
-    "lodash": "latest"
+    "async": "^3.2.0",
+    "jsforce": "^1.10.1",
+    "lodash": "^4.17.21"
   }
 }
